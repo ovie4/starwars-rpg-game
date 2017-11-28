@@ -1,15 +1,17 @@
 $(document).ready(function() {
 
     $("#restart").hide();
+    $(".strike").hide();
     //create characters for player to use...each character an object?
     var characters = [
         obiWan = {
             name: "Obi Wan",
             healthPoints: 120,
-            attack: 8,
+            attack: 15,
             counterAttack: 15,
-            pic: '<img id="obiPic" src="./assets/images/obiwan.jpg" alt="Luke SkyWalker">',
+            pic: '<img id="attPic" src="./assets/images/obiwan.jpg" alt="Obi Wan Kenobi">',
             key: "obiWan",
+            div: "#obiDiv",
         },
 
         luke = {
@@ -17,9 +19,9 @@ $(document).ready(function() {
             healthPoints: 100,
             attack: 6,
             counterAttack: 18,
-            pic: '<img id="lukePic" src="./assets/images/luke.jpg" alt="Luke SkyWalker">',
+            pic: '<img id="attPic" src="./assets/images/luke.jpg" alt="Luke SkyWalker">',
             key: "luke",
-
+            div: "#lukeDiv",
         },
 
         darthMaul = {
@@ -27,17 +29,18 @@ $(document).ready(function() {
             healthPoints: 150,
             attack: 15,
             counterAttack: 25,
-            pic: '<img id="maulPic" src="./assets/images/maul.jpg" alt="Darth Maul">',
+            pic: '<img id="attPic" src="./assets/images/maul.jpg" alt="Darth Maul">',
             key: "darthMaul",
+            div: "#maulDiv",
         },
         yoda = {
             name: "Master Yoda",
             healthPoints: 80,
             attack: 20,
             counterAttack: 35,
-            pic: '<img id="yodaPic" src="./assets/images/yoda.png" alt="yoda">',
+            pic: '<img id="attPic" src="./assets/images/yoda.png" alt="yoda">',
             key: "yoda",
-
+            div: "#yodaDiv",
         }
     ]
 
@@ -47,19 +50,12 @@ $(document).ready(function() {
     var wins = 0;
     var attPower;
 
-    //populate the characters
-    //for (var i = 0; i < characters.length; i++) {
-
-    //}
-
-
-    //create function to choose attacker
+     //create function to choose attacker
     function attChoice() {
         //get button clicked and put that character in attack div
         $(".charChoice").on("click", function() {
         	 attPower = attacker.attack;
-            //$(this.id).toggle();
-            //console.log(this);
+            
 
             if (clickCount === 1) {
             	
@@ -68,7 +64,7 @@ $(document).ready(function() {
                     console.log(this.id);
                     if (this.id === characters[i].key) {
                         attacker = characters[i];
-
+                        $(attacker.div).css("background-color", "green");
                         console.log(attacker);
                         $("img#attPic").replaceWith(attacker.pic); //doesn't work
                         $("#attName").html(attacker.name);
@@ -82,30 +78,35 @@ $(document).ready(function() {
         })
 
     }
-    
-
+ 
     //give player choice of defender from remaining options
     function defChoice() {
 
         $(".charChoice").on("click", function() {
             if (this.id != attacker.key) {
-                console.log(attacker);
+                
                 if (clickCount != 1) {
                     console.log("clicks: "+clickCount);
                     console.log("You picked a defender");
+                    
                     for (var i = 0; i < characters.length; i++) {
 
                         if (this.id === characters[i].key) {
                             defender = characters[i];
-                            if (defender.healthPoints > 0) {
+                             
+                            if  (defender.healthPoints <= 0) {
+                                alert("Stop!He's already dead!!");
+                            }
+
+                            	 else if (defender.healthPoints > 0) {
+                            	 $(defender.div).css("background-color", "blue");
                                 console.log(defender);
-                                $("img#defPic").replaceWith(defender.pic);
+                                $("#defPic").replaceWith(defender.pic); //only works once?
                                 $("#defName").html(defender.name);
                                 $("#defHP").html(defender.healthPoints);
+                                $(".strike").show();
                                 //figure out how to hide picked option
-                            } else if (defender.healthPoints <= 0) {
-                                alert("Stop!They're already dead!!");
-                            }
+                            } 
                         }
                     }
                 }
@@ -118,7 +119,7 @@ $(document).ready(function() {
                     alert("The Force Is With You!");
                     $("#restart").show();
                     $("#restartButton").click(function() { location.reload(); });
-                } 
+                } //not running for some reason?
 
             }
             
@@ -126,34 +127,23 @@ $(document).ready(function() {
     //create entire fight sequence function
     function fight() {
     	
-    	console.log("attack power is "+ attPower);
-
-        $(".strike").on("click", function() {
+    	   $(".strike").on("click", function() {
             var attHealth = attacker.healthPoints;
-            
-            /*	var attHealth = attacker.healthPoints;
-            var defHealth = defender.healthPoints;
-            var defCounter = defender.counterAttack;*/
+                      
             console.log("Attacker is " + attacker);
             console.log("Defender is " + defender);
-            //return new health values,etc
-            //function updateHealth() {
-            //reduce opponent HP by attPower and alert
+            //reduce opponent HP by attack 
             defender.healthPoints = defender.healthPoints - attacker.attack;
             console.log("defender health left is " + defender.healthPoints);
             $("#defHP").html(defender.healthPoints);
-            $("#attDetails").append("<p>You attacked " + defender.name + " with " + attacker.attack + " damage</p>");
             //reduce attackerHP by counterattack power and alert
             attHealth = attHealth - defender.counterAttack;
             console.log("attacker health left is " + attacker.healthPoints);
             $("#attHP").html(attHealth);
+            $("#attDetails").append("<p>You attacked " + defender.name + " with " + attacker.attack + " damage</p><p>"+defender.name+" attacked you with "+defender.counterAttack+" damage</p><p>--------</p>");
             //increase attPower by base attack power
-            //if(clickCount===1){
-            attacker.attack = attPower + attacker.attack;
-            //}
-            //}
-            //updateHealth();
-            //return attHealth;
+            attacker.attack = attPower + attacker.attack; //hits a snag after defeating the first opponent because attacker.attack has been reset to higher value
+                       
             //create function to check for wins
            
                 if (attacker.healthPoints <= 0) {
@@ -164,6 +154,7 @@ $(document).ready(function() {
                  else if (defender.healthPoints<=0) {
                    console.log(defender);
                    wins++;
+                    $(defender.div).css("background-color", "red");
                    console.log("winsbf: "+wins);
                     checkWins();
                     alert("You Win. Pick a new character");
