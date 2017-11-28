@@ -1,0 +1,12 @@
+body{
+	background: url(../images/starwarstheme.jpg);
+	height:100%;
+}
+
+#attDetails{
+	color: white;
+}
+
+img{
+	max-height: 150px;
+}

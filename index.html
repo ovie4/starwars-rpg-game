@@ -12,48 +12,50 @@
 </head>
 
 <body>
+
     <div class="container">
+    	<h1>Star Wars RPG</h1>
         <!--one row for available characters-->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-11">
                 <div class="row">
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-xs-6 col-md-3">
                         <div class="thumbnail" id="yodaDiv">
                             <img id="yodaPic" src="./assets/images/yoda.png" alt="...">
                             <div class="caption">
-                                <h3 id="charName1">Master Yoda</h3>
-                                <p id="charHP1">HP here</p>
-                                <p><a href="#" class="btn btn-primary charChoice" id="yoda" role="button">Master Yoda</a></p>
+                                <h6 id="charName1">Master Yoda</h6>
+                                <p id="charHP1">80</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="yoda" role="button">Choose</a></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">
+                    <div class="col-xs-6 col-md-3">
                         <div class="thumbnail" id="lukeDiv">
-                            <img id="lukePic" src="..." alt="Luke SkyWalker">
+                            <img id="lukePic" src="./assets/images/luke.jpg" alt="Luke SkyWalker">
                             <div class="caption">
-                                <h3 id="charName2"></h3>
-                                <p id="charHP2"></p>
-                                <p><a href="#" class="btn btn-primary charChoice" id="luke" role="button">Luke SkyWalker</a></p>
+                                <h6 id="charName2">Luke</h6>
+                                <p id="charHP2">100</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="luke" role="button">Choose</a></p>
                             </div>
                         </div>
                     </div>
-                     <div class="col-sm-6 col-md-3">
-                        <div class="thumbnail" id="lukeDiv">
-                            <img id="obiPic" src="..." alt="ObiWan Kenobi">
+                     <div class="col-xs-6 col-md-3">
+                        <div class="thumbnail" id="obiDiv">
+                            <img id="obiPic" src="./assets/images/obiwan.jpg" alt="ObiWan Kenobi">
                             <div class="caption">
-                                <h3 id="charName2"></h3>
-                                <p id="charHP2"></p>
-                                <p><a href="#" class="btn btn-primary charChoice" id="obiWan" role="button">ObiWan Kenobi</a></p>
+                                <h6 id="charName2">Obi Wan</h6>
+                                <p id="charHP2">120</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="obiWan" role="button">Choose</a></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="thumbnail">
-                            <img id="darthMaul" src="..." alt="Darth Maul">
+                 	<div class="col-xs-6 col-md-3">
+                        <div class="thumbnail" id="maulDiv">
+                            <img id="maulPic" src="./assets/images/maul.jpg" alt="Darth Maul">
                             <div class="caption">
-                                <h3 id="charName3"></h3>
-                                <p id="charHP3"></p>
-                                <p><a href="#" class="btn btn-primary" id="darthMaul charChoice" role="button">Darth Maul</a></p>
+                                <h6 id="charName3">Darth Maul</h6>
+                                <p id="charHP3">150</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="darthMaul"  role="button">Choose</a></p>
                             </div>
                         </div>
                     </div>
@@ -62,10 +64,13 @@
         </div>
         <!--one row for fight section...2 columns-->
         <div class="row">
-            <div class="col-md-5" id="attacker">
-            	<div class="col-sm-6 col-md-6">
+            <div class="col-md-6" id="attacker">
+            	<div class="col-sm-6 col-md-5">
                         <div class="thumbnail">
-                            <img id="attPic" src="..." alt="...">
+                            
+                            	<img id="attPic" src="./assets/images/stormtrooper.jpg" />
+                            
+                            
                             <div class="caption">
                                 <h3 id="attName"></h3>
                                 <p id="attHP"></p>
@@ -75,10 +80,13 @@
                     </div>
 
             </div>
-            <div class="col-md-5" id="defender">
-            	<div class="col-sm-6 col-md-4">
+            <div class="col-md-6" id="defender">
+            	<div class="col-sm-6 col-md-5">
                         <div class="thumbnail">
-                            <img src="..." id="defPic" alt="defender">
+                            
+                            	<img id="defPic" alt="defender" src="./assets/images/stormtrooper.jpg" />
+                            
+                            
                             <div class="caption">
                                 <h3 id="defName"></h3>
                                 <p id="defHP"></p>             
@@ -92,7 +100,8 @@
             <div class="col-md-6">
             	<p id="attack" class="btn btn-primary strike" role="button">Attack</p>
             	<p id="attDetails"></p>
-            	<p id="counterDetails"></p> 
+            	<p id="counterDetails"></p>
+            	<p id="restart"><a href="#" class="btn btn-primary" id="restartButton" role="button">Restart</a></p> 
             </div>
         </div>
     </div>
