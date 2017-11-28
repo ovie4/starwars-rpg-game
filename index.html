@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Star Wars RPG</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+    
+</head>
+
+<body>
+
+    <div class="container">
+    	<h1>Star Wars RPG</h1>
+        <!--one row for available characters-->
+        <div class="row">
+            <div class="col-md-11">
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <div class="thumbnail" id="yodaDiv">
+                            <img id="yodaPic" src="./assets/images/yoda.png" alt="...">
+                            <div class="caption">
+                                <h6 id="charName1">Master Yoda</h6>
+                                <p id="charHP1">80</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="yoda" role="button">Choose</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="thumbnail" id="lukeDiv">
+                            <img id="lukePic" src="./assets/images/luke.jpg" alt="Luke SkyWalker">
+                            <div class="caption">
+                                <h6 id="charName2">Luke</h6>
+                                <p id="charHP2">100</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="luke" role="button">Choose</a></p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-xs-6 col-md-3">
+                        <div class="thumbnail" id="obiDiv">
+                            <img id="obiPic" src="./assets/images/obiwan.jpg" alt="ObiWan Kenobi">
+                            <div class="caption">
+                                <h6 id="charName2">Obi Wan</h6>
+                                <p id="charHP2">120</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="obiWan" role="button">Choose</a></p>
+                            </div>
+                        </div>
+                    </div>
+                 	<div class="col-xs-6 col-md-3">
+                        <div class="thumbnail" id="maulDiv">
+                            <img id="maulPic" src="./assets/images/maul.jpg" alt="Darth Maul">
+                            <div class="caption">
+                                <h6 id="charName3">Darth Maul</h6>
+                                <p id="charHP3">150</p>
+                                <p><a href="#" class="btn btn-primary charChoice" id="darthMaul"  role="button">Choose</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--one row for fight section...2 columns-->
+        <div class="row">
+            <div class="col-md-6" id="attacker">
+            	<div class="col-sm-6 col-md-5">
+                        <div class="thumbnail">
+                            
+                            	<img id="attPic" src="./assets/images/stormtrooper.jpg" />
+                            
+                            
+                            <div class="caption">
+                                <h3 id="attName">Attacker</h3>
+                                <p id="attHP"></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="col-md-6" id="defender">
+            	<div class="col-sm-6 col-md-5">
+                        <div class="thumbnail">
+                            
+                            	<img id="defPic" alt="defender" src="./assets/images/stormtrooper.jpg" />
+                            
+                            
+                            <div class="caption">
+                                <h3 id="defName">Defender</h3>
+                                <p id="defHP"></p>             
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!--one row for fight details and action button-->
+        <div class="row">
+            <div class="col-md-6">
+            	<p id="attack" class="btn btn-primary strike" role="button">Attack</p>
+            	<p class="details" id="attDetails"></p>
+            	<p id="restart"><a href="#" class="btn btn-primary" id="restartButton" role="button">Restart</a></p> 
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
